@@ -701,7 +701,7 @@ public class AsyncCamelliaRedisClusterClient implements AsyncClient {
         RedisCommand.CommandSupportType supportType = redisCommand.getSupportType();
         if (supportType == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_2
                 || supportType == RedisCommand.CommandSupportType.RESTRICTIVE_SUPPORT) {
-            return false;
+//            return false;
         }
         RedisCommand.CommandKeyType commandKeyType = redisCommand.getCommandKeyType();
         return commandKeyType == RedisCommand.CommandKeyType.SIMPLE_SINGLE && !command.isBlocking();

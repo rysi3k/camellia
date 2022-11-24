@@ -214,13 +214,13 @@ public class AsyncCamelliaRedisTemplate implements IAsyncCamelliaRedisTemplate {
             }
 
             if (redisCommand.getSupportType() == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_2) {
-                if (proxyRouteType != ProxyRouteType.REDIS_STANDALONE && proxyRouteType != ProxyRouteType.REDIS_SENTINEL
-                        && proxyRouteType != ProxyRouteType.REDIS_CLUSTER) {
-                    CompletableFuture<Reply> future = new CompletableFuture<>();
-                    future.complete(ErrorReply.NOT_SUPPORT);
-                    futureList.add(future);
-                    continue;
-                }
+                //if (proxyRouteType != ProxyRouteType.REDIS_STANDALONE && proxyRouteType != ProxyRouteType.REDIS_SENTINEL
+                //        && proxyRouteType != ProxyRouteType.REDIS_CLUSTER) {
+                //    CompletableFuture<Reply> future = new CompletableFuture<>();
+                //    future.complete(ErrorReply.NOT_SUPPORT);
+                //    futureList.add(future);
+                //    continue;
+                //}
                 Resource resource = resourceChooser.getReadResource(Utils.EMPTY_ARRAY);
                 String url = resource.getUrl();
                 AsyncClient client = factory.get(url);
@@ -548,7 +548,7 @@ public class AsyncCamelliaRedisTemplate implements IAsyncCamelliaRedisTemplate {
         for (Command command : commands) {
             RedisCommand redisCommand = command.getRedisCommand();
             if (redisCommand.getSupportType() == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_1
-                    || redisCommand.getSupportType() == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_2
+                  //  || redisCommand.getSupportType() == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_2
                     || redisCommand.getSupportType() == RedisCommand.CommandSupportType.PARTIALLY_SUPPORT_3) {
                 return false;
             }
